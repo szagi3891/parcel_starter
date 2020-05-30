@@ -37540,24 +37540,30 @@ function () {
   return State;
 }();
 
+var List = mobx_react_lite_1.observer(function (props) {
+  var state = props.state;
+  var przyciski = [];
+
+  for (var i = 0; i < state.ilosc; i++) {
+    przyciski.push(React.createElement(Text_1.Text, {
+      key: i,
+      label: "__label__" + state.ilosc + "__"
+    }));
+  }
+
+  return React.createElement(React.Fragment, null, przyciski);
+});
 exports.App = mobx_react_lite_1.observer(function () {
   var _a = __read(React.useState(function () {
     return new State();
   }), 1),
       state = _a[0];
 
-  var przyciski = [];
-
-  for (var i = 0; i < state.ilosc; i++) {
-    przyciski.push(React.createElement(Text_1.Text, {
-      key: i,
-      label: "label " + i
-    }));
-  }
-
   return React.createElement("div", null, React.createElement("div", {
     onClick: state.inc
-  }, "witaj fantastyczny swiecie ", state.ilosc), React.createElement("div", null, "AAAA - 4321"), przyciski, React.createElement("div", null, "adassadsa"), React.createElement("div", null, "sdasdas"));
+  }, "witaj fantastyczny swiecie ", state.ilosc, " - kliknij mnie!!"), React.createElement("div", null, "AAAA - 4321"), React.createElement(List, {
+    state: state
+  }), React.createElement("div", null, "adassadsa"), React.createElement("div", null, "sdasdas"));
 });
 },{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","./Text":"Text.tsx","mobx":"node_modules/mobx/lib/mobx.module.js"}],"index.tsx":[function(require,module,exports) {
 "use strict";
@@ -37635,7 +37641,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46755" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42653" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

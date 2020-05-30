@@ -11,24 +11,38 @@ class State {
     }
 }
 
-export const App = observer(() => {
-    const [state] = React.useState(() => new State());
+interface ListPropsType {
+    state: State,
+}
+
+const List = observer((props: ListPropsType) => {
+    const { state } = props;
 
     const przyciski = [];
 
     for (let i=0; i<state.ilosc; i++) {
         przyciski.push(
-            <Text key={i} label={`label ${i}`} />
+            <Text key={i} label={`__label__${state.ilosc}__`} />
         );
     }
 
     return (
+        <>
+            {przyciski}
+        </>
+    );
+});
+
+export const App = observer(() => {
+    const [state] = React.useState(() => new State());
+
+    return (
         <div>
             <div onClick={state.inc}>
-                witaj fantastyczny swiecie {state.ilosc}
+                witaj fantastyczny swiecie {state.ilosc} - kliknij mnie!!
             </div>
             <div>AAAA - 4321</div>
-            {przyciski}
+            <List state={state} />
             <div>adassadsa</div>
             <div>sdasdas</div>
         </div>
