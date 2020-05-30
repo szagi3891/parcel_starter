@@ -8,11 +8,14 @@ export class App extends React.Component {
         return (
             <div>
                 <div>
-                    witaj swiecie
+                    witaj fantastyczny swiecie
                 </div>
                 <Text label="label1" />
                 <Text label="label2" />
                 <Text label="label3" />
+                <Text label="label4" />
+                <div>adassadsa</div>
+                <div>sdasdas</div>
             </div>
         );
     }

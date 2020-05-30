@@ -20,8 +20,8 @@ interface PropsType {
 export class Text extends React.Component<PropsType> {
     @observable counter: number = 0;
 
-    @computed get isActive() {
-        return this.counter % 2 === 0;
+    @computed get isActive(): boolean {
+        return this.counter % 4 === 0;
     }
 
     constructor(props: PropsType) {
@@ -35,7 +35,7 @@ export class Text extends React.Component<PropsType> {
     render() {
         return (
             <KoloroweJarmarki active={this.isActive}>
-                to jest jakis button {this.props.label} {this.counter}
+                to jest jakis button {this.props.label} {this.counter} cosik
             </KoloroweJarmarki>
         );
     }
