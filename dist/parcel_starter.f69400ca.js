@@ -37286,32 +37286,6 @@ var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked
   return cooked;
 };
 
-var __extends = this && this.__extends || function () {
-  var _extendStatics = function extendStatics(d, b) {
-    _extendStatics = Object.setPrototypeOf || {
-      __proto__: []
-    } instanceof Array && function (d, b) {
-      d.__proto__ = b;
-    } || function (d, b) {
-      for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-      }
-    };
-
-    return _extendStatics(d, b);
-  };
-
-  return function (d, b) {
-    _extendStatics(d, b);
-
-    function __() {
-      this.constructor = d;
-    }
-
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   Object.defineProperty(o, k2, {
@@ -37354,6 +37328,33 @@ var __importStar = this && this.__importStar || function (mod) {
   __setModuleDefault(result, mod);
 
   return result;
+};
+
+var __read = this && this.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
 };
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -37379,75 +37380,61 @@ var KoloroweJarmarki = styled_1.default('div')(templateObject_1 || (templateObje
   return props.active ? 'red' : 'blue';
 });
 
-var Text =
+var State =
 /** @class */
-function (_super) {
-  __extends(Text, _super);
+function () {
+  function State() {
+    var _this = this;
 
-  function Text(props) {
-    var _this = _super.call(this, props) || this;
-
-    _this.counter = 0;
+    this.counter = 0;
     setInterval(function () {
       _this.counter++;
     }, 1000);
-    return _this;
   }
 
-  Object.defineProperty(Text.prototype, "isActive", {
+  Object.defineProperty(State.prototype, "isActive", {
     get: function get() {
       return this.counter % 4 === 0;
     },
     enumerable: false,
     configurable: true
   });
+  Object.defineProperty(State.prototype, "text", {
+    get: function get() {
+      if (this.counter % 2 === 0) {
+        return 'Parzyste';
+      }
 
-  Text.prototype.render = function () {
-    return React.createElement(KoloroweJarmarki, {
-      active: this.isActive
-    }, "to jest jakis button ", this.props.label, " ", this.counter, " cosik");
-  };
+      return 'nieparzyste';
+    },
+    enumerable: false,
+    configurable: true
+  });
 
-  __decorate([mobx_1.observable], Text.prototype, "counter", void 0);
+  __decorate([mobx_1.observable], State.prototype, "counter", void 0);
 
-  __decorate([mobx_1.computed], Text.prototype, "isActive", null);
+  __decorate([mobx_1.computed], State.prototype, "isActive", null);
 
-  Text = __decorate([mobx_react_1.observer], Text);
-  return Text;
-}(React.Component);
+  __decorate([mobx_1.computed], State.prototype, "text", null);
 
-exports.Text = Text;
+  return State;
+}();
+
+exports.Text = mobx_react_1.observer(function (props) {
+  var _a = __read(React.useState(function () {
+    return new State();
+  }), 1),
+      state = _a[0];
+
+  return React.createElement(KoloroweJarmarki, {
+    active: state.isActive
+  }, "to jest jakis button ", props.label, " ", state.counter, " cosik ", state.text);
+});
 var templateObject_1;
 },{"react":"node_modules/react/index.js","mobx":"node_modules/mobx/lib/mobx.module.js","mobx-react":"node_modules/mobx-react/dist/mobxreact.esm.js","@emotion/styled":"node_modules/@emotion/styled/dist/styled.browser.esm.js"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var __extends = this && this.__extends || function () {
-  var _extendStatics = function extendStatics(d, b) {
-    _extendStatics = Object.setPrototypeOf || {
-      __proto__: []
-    } instanceof Array && function (d, b) {
-      d.__proto__ = b;
-    } || function (d, b) {
-      for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-      }
-    };
-
-    return _extendStatics(d, b);
-  };
-
-  return function (d, b) {
-    _extendStatics(d, b);
-
-    function __() {
-      this.constructor = d;
-    }
-
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
@@ -37493,6 +37480,33 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __read = this && this.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -37500,37 +37514,52 @@ exports.App = void 0;
 
 var React = __importStar(require("react"));
 
-var mobx_react_1 = require("mobx-react");
+var mobx_react_lite_1 = require("mobx-react-lite");
 
 var Text_1 = require("./Text");
 
-var App =
-/** @class */
-function (_super) {
-  __extends(App, _super);
+var mobx_1 = require("mobx");
 
-  function App() {
-    return _super !== null && _super.apply(this, arguments) || this;
+var State =
+/** @class */
+function () {
+  function State() {
+    var _this = this;
+
+    this.ilosc = 3;
+
+    this.inc = function () {
+      _this.ilosc++;
+    };
   }
 
-  App.prototype.render = function () {
-    return React.createElement("div", null, React.createElement("div", null, "witaj fantastyczny swiecie"), React.createElement(Text_1.Text, {
-      label: "label1"
-    }), React.createElement(Text_1.Text, {
-      label: "label2"
-    }), React.createElement(Text_1.Text, {
-      label: "label3"
-    }), React.createElement(Text_1.Text, {
-      label: "label4"
-    }), React.createElement("div", null, "adassadsa"), React.createElement("div", null, "sdasdas"));
-  };
+  __decorate([mobx_1.observable], State.prototype, "ilosc", void 0);
 
-  App = __decorate([mobx_react_1.observer], App);
-  return App;
-}(React.Component);
+  __decorate([mobx_1.action], State.prototype, "inc", void 0);
 
-exports.App = App;
-},{"react":"node_modules/react/index.js","mobx-react":"node_modules/mobx-react/dist/mobxreact.esm.js","./Text":"Text.tsx"}],"index.tsx":[function(require,module,exports) {
+  return State;
+}();
+
+exports.App = mobx_react_lite_1.observer(function () {
+  var _a = __read(React.useState(function () {
+    return new State();
+  }), 1),
+      state = _a[0];
+
+  var przyciski = [];
+
+  for (var i = 0; i < state.ilosc; i++) {
+    przyciski.push(React.createElement(Text_1.Text, {
+      key: i,
+      label: "label " + i
+    }));
+  }
+
+  return React.createElement("div", null, React.createElement("div", {
+    onClick: state.inc
+  }, "witaj fantastyczny swiecie ", state.ilosc), React.createElement("div", null, "AAAA - 4321"), przyciski, React.createElement("div", null, "adassadsa"), React.createElement("div", null, "sdasdas"));
+});
+},{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","./Text":"Text.tsx","mobx":"node_modules/mobx/lib/mobx.module.js"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -37606,7 +37635,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46581" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46755" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

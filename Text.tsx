@@ -12,31 +12,38 @@ const KoloroweJarmarki = styled('div')<KoloroweJarmarkiPropsType>`
     color: ${props => props.active ? 'red' : 'blue'};
 `;
 
-interface PropsType {
-    label: string
-}
-
-@observer
-export class Text extends React.Component<PropsType> {
+class State {
     @observable counter: number = 0;
 
     @computed get isActive(): boolean {
         return this.counter % 4 === 0;
     }
 
-    constructor(props: PropsType) {
-        super(props);
+    @computed get text(): string {
+        if (this.counter % 2 === 0) {
+            return 'Parzyste';
+        }
 
+        return 'nieparzyste';
+    }
+
+    constructor() {
         setInterval(() => {
             this.counter++;
         }, 1000);
     }
-
-    render() {
-        return (
-            <KoloroweJarmarki active={this.isActive}>
-                to jest jakis button {this.props.label} {this.counter} cosik
-            </KoloroweJarmarki>
-        );
-    }
 }
+
+interface PropsType {
+    label: string
+}
+
+export const Text = observer((props: PropsType) => {
+    const [state] = React.useState(() => new State());
+
+    return (
+        <KoloroweJarmarki active={state.isActive}>
+            to jest jakis button {props.label} {state.counter} cosik {state.text}
+        </KoloroweJarmarki>
+    );
+})
