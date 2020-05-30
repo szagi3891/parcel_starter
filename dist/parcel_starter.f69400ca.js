@@ -37269,7 +37269,7 @@ tags.forEach(function (tagName) {
 });
 var _default = newStyled;
 exports.default = _default;
-},{"@emotion/styled-base":"node_modules/@emotion/styled-base/dist/styled-base.browser.esm.js"}],"Text.tsx":[function(require,module,exports) {
+},{"@emotion/styled-base":"node_modules/@emotion/styled-base/dist/styled-base.browser.esm.js"}],"src/Text.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -37431,10 +37431,8 @@ exports.Text = mobx_react_1.observer(function (props) {
   }, "to jest jakis button ", props.label, " ", state.counter, " cosik ", state.text);
 });
 var templateObject_1;
-},{"react":"node_modules/react/index.js","mobx":"node_modules/mobx/lib/mobx.module.js","mobx-react":"node_modules/mobx-react/dist/mobxreact.esm.js","@emotion/styled":"node_modules/@emotion/styled/dist/styled.browser.esm.js"}],"App.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","mobx":"node_modules/mobx/lib/mobx.module.js","mobx-react":"node_modules/mobx-react/dist/mobxreact.esm.js","@emotion/styled":"node_modules/@emotion/styled/dist/styled.browser.esm.js"}],"src/List.tsx":[function(require,module,exports) {
 "use strict";
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
@@ -37458,6 +37456,47 @@ var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? fun
   o["default"] = v;
 });
 
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.List = void 0;
+
+var React = __importStar(require("react"));
+
+var mobx_react_lite_1 = require("mobx-react-lite");
+
+var Text_1 = require("./Text");
+
+exports.List = mobx_react_lite_1.observer(function (props) {
+  var state = props.state;
+  var przyciski = [];
+
+  for (var i = 0; i < state.ilosc; i++) {
+    przyciski.push(React.createElement(Text_1.Text, {
+      key: i,
+      label: "__label__" + state.ilosc + "__"
+    }));
+  }
+
+  return React.createElement(React.Fragment, null, przyciski);
+});
+},{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","./Text":"src/Text.tsx"}],"src/App.state.ts":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var __decorate = this && this.__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
       r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
@@ -37467,6 +37506,130 @@ var __decorate = this && this.__decorate || function (decorators, target, key, d
   }
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.State = void 0;
+
+var mobx_1 = require("mobx");
+
+var State =
+/** @class */
+function () {
+  function State() {
+    var _this = this;
+
+    this.ilosc = 3;
+
+    this.inc = function () {
+      _this.ilosc++;
+    };
+  }
+
+  __decorate([mobx_1.observable], State.prototype, "ilosc", void 0);
+
+  __decorate([mobx_1.action], State.prototype, "inc", void 0);
+
+  return State;
+}();
+
+exports.State = State;
+},{"mobx":"node_modules/mobx/lib/mobx.module.js"}],"src/Footer.tsx":[function(require,module,exports) {
+"use strict";
+
+var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var React = __importStar(require("react"));
+
+var mobx_react_lite_1 = require("mobx-react-lite");
+
+var styled_1 = __importDefault(require("@emotion/styled"));
+
+var Wrapper = styled_1.default('div')(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border: 1px solid black;\n    padding: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    color: green;\n"], ["\n    border: 1px solid black;\n    padding: 10px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    color: green;\n"])));
+exports.Footer = mobx_react_lite_1.observer(function () {
+  return React.createElement(Wrapper, null, React.createElement("div", null, "To jest jaka\u015B\xA0stopka"), React.createElement("div", null, "adres kontaktowy bla bla bla"));
+});
+var templateObject_1;
+},{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","@emotion/styled":"node_modules/@emotion/styled/dist/styled.browser.esm.js"}],"src/App.tsx":[function(require,module,exports) {
+"use strict";
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
 
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
@@ -37516,56 +37679,25 @@ var React = __importStar(require("react"));
 
 var mobx_react_lite_1 = require("mobx-react-lite");
 
-var Text_1 = require("./Text");
+var List_1 = require("./List");
 
-var mobx_1 = require("mobx");
+var App_state_1 = require("./App.state");
 
-var State =
-/** @class */
-function () {
-  function State() {
-    var _this = this;
+var Footer_1 = require("./Footer");
 
-    this.ilosc = 3;
-
-    this.inc = function () {
-      _this.ilosc++;
-    };
-  }
-
-  __decorate([mobx_1.observable], State.prototype, "ilosc", void 0);
-
-  __decorate([mobx_1.action], State.prototype, "inc", void 0);
-
-  return State;
-}();
-
-var List = mobx_react_lite_1.observer(function (props) {
-  var state = props.state;
-  var przyciski = [];
-
-  for (var i = 0; i < state.ilosc; i++) {
-    przyciski.push(React.createElement(Text_1.Text, {
-      key: i,
-      label: "__label__" + state.ilosc + "__"
-    }));
-  }
-
-  return React.createElement(React.Fragment, null, przyciski);
-});
 exports.App = mobx_react_lite_1.observer(function () {
   var _a = __read(React.useState(function () {
-    return new State();
+    return new App_state_1.State();
   }), 1),
       state = _a[0];
 
   return React.createElement("div", null, React.createElement("div", {
     onClick: state.inc
-  }, "witaj fantastyczny swiecie ", state.ilosc, " - kliknij mnie!!"), React.createElement("div", null, "AAAA - 4321"), React.createElement(List, {
+  }, "witaj fantastyczny swiecie ", state.ilosc, " - kliknij mnie!!"), React.createElement("div", null, "AAAA - 4321"), React.createElement(List_1.List, {
     state: state
-  }), React.createElement("div", null, "adassadsa"), React.createElement("div", null, "sdasdas"));
+  }), React.createElement(Footer_1.Footer, null));
 });
-},{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","./Text":"Text.tsx","mobx":"node_modules/mobx/lib/mobx.module.js"}],"index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","mobx-react-lite":"node_modules/mobx-react-lite/dist/mobxreactlite.esm.js","./List":"src/List.tsx","./App.state":"src/App.state.ts","./Footer":"src/Footer.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -37610,10 +37742,10 @@ var React = __importStar(require("react"));
 
 var ReactDOM = __importStar(require("react-dom"));
 
-var App_1 = require("./App");
+var App_1 = require("./src/App");
 
 ReactDOM.render(React.createElement(App_1.App, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.tsx"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./src/App":"src/App.tsx"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37641,7 +37773,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42653" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42703" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
