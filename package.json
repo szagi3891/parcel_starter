@@ -8,6 +8,8 @@
     "ts-check:watch": "yarn run tsc --noEmit -p . --watch"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
     "@types/node": "14.0.6",
@@ -16,11 +18,12 @@
     "mobx": "^5.9.0",
     "mobx-react": "6.2.2",
     "mobx-react-lite": "^2.0.7",
-    "parcel": "^1.11.0",
+    "parcel": "^2.0.0-beta.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
-    "typescript": "^3.3.3333"
+    "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
+    "typescript": "3.9"
   }
 }
