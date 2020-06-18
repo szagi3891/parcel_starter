@@ -1,0 +1,1 @@
+./node_modules/.bin/parcel build --dist-dir=dist index.html
