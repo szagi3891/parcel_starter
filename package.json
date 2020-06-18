@@ -1,7 +1,7 @@
 {
   "name": "StarterWithParcel",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "license": "MIT",
   "scripts": {
     "ts-check": "yarn run tsc --noEmit -p .",
