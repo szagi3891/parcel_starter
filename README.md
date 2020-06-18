@@ -22,3 +22,8 @@ yarn run ts-check
 ```
 yarn run ts-check:watch
 ```
+
+#info
+
+https://reactnative.dev/docs/fast-refresh
+https://parcel2-docs.now.sh/languages/typescript/
